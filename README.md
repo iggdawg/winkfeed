@@ -1,50 +1,72 @@
-# Welcome to your Expo app 👋
+# WinkFeed
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+WinkFeed is a high-performance, unified social aggregator built with React Native and Expo. Deeply inspired by the classic HTC BlinkFeed aesthetic, it seamlessly merges content from Reddit, Bluesky, Mastodon, and the Open Web into a single, beautifully organized chronological timeline.
 
-## Get started
+## ✨ Features
 
-1. Install dependencies
+- **Unified Chronological Feed:** A perfectly interleaved masonry grid combining your favorite subreddits, decentralized fediverse timelines, and custom news topics.
+- **Dynamic Weather Header:** A sleek, dashboard-style header that pulls your live location and weather data, shifting its gradient background to match the time of day and current forecast.
+- **Dedicated Media Gallery:** A visual-first tab that isolates image and video content from Bluesky, Mastodon, and Reddit into an edge-to-edge media feed.
+- **Smart Video Autoplay:** Powered by `expo-video` and `expo-network`, videos load natively and seamlessly. Autoplay policies intelligently adapt to your network state (Wi-Fi vs. Cellular) to save your mobile data.
+- **Deep Personalization:** A robust settings suite backed by `zustand` allows you to manage active sources, blacklist specific news outlets, provide custom Mastodon instance credentials, and toggle network constraints.
 
+## 🛠 Tech Stack
+
+- **Framework:** [Expo](https://expo.dev/) & React Native (SDK 54)
+- **State Management:** `zustand` (with persistent storage)
+- **Navigation:** Expo Router (File-based routing)
+- **UI & Layout:** `@shopify/flash-list` for performant masonry grids
+- **Media:** `expo-video`, `expo-image`
+- **Device Integrations:** `expo-location`, `expo-network`, `expo-secure-store`
+
+## 🚀 Getting Started
+
+### Prerequisites
+Make sure you have Node.js and the Expo CLI installed.
+If you'd like to run a local EAS build, ensure you have the Android SDK configured.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/iggdawg/winkfeed.git
+   cd winkfeed
+   ```
+
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. **Start the Expo development server:**
    ```bash
-   npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+### Building the APK
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+You can build a standalone Android APK directly on your local machine using EAS Build.
+*Note: You must have the Android SDK installed and your `ANDROID_HOME` environment variable properly configured.*
 
 ```bash
-npm run reset-project
+eas build -p android --profile preview --local
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Alternatively, omit the `--local` flag to compile the app using Expo's cloud servers.
 
-## Learn more
+## 📡 API Integrations
 
-To learn more about developing your project with Expo, look at the following resources:
+WinkFeed respects your privacy and utilizes direct device-to-API requests wherever possible.
+- **Reddit:** Unauthenticated JSON API parsing (`r/all.json`).
+- **Bluesky:** Built on the official `@atproto/api` for native thread resolution.
+- **Mastodon:** REST API integration supporting any valid fediverse instance.
+- **NewsAPI:** Direct polling with client-side blocklist filtering.
+- **Open-Meteo:** Privacy-first, keyless weather data endpoint.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🤝 Contributing
 
-## Join the community
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page if you want to contribute.
 
-Join our community of developers creating universal apps.
+## 📝 License
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License.
